@@ -4,19 +4,35 @@ class AppRouter {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case RouteName.splashScreen:
-      // return MaterialPageRoute(builder: (_) => SplashScreen());
+        return _buildRoute(const SplashScreen());
+
+      case RouteName.onboardingScreen:
+        return _buildRoute(OnboardingScreen());
+      case RouteName.signInScreen:
+        return _buildRoute(SigninScreen());
 
       default:
         return unDefineRoute();
     }
   }
 
-  static Route<dynamic> unDefineRoute() {
-    return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        // appBar: AppBar(title: Text(AppString.noRoute)),
-        // body: Center(child: Text(AppString.noRoute)),
-      ),
+  /// CLEAN ROUTE (NO SIDE EFFECT, NO COLOR FLASH)
+  static PageRouteBuilder _buildRoute(Widget page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+
+      transitionDuration: const Duration(milliseconds: 250),
+
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+
+      /// IMPORTANT: removes black/white side flicker
+      maintainState: true,
     );
+  }
+
+  static Route<dynamic> unDefineRoute() {
+    return MaterialPageRoute(builder: (_) => const Scaffold());
   }
 }
