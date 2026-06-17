@@ -16,6 +16,8 @@ class AppRouter {
         return _buildRoute(ForgotPasswordScreen());
       case RouteName.navBarScreen:
         return _buildRoute(NavbarScreen());
+      case RouteName.captureScreen:
+        return _buildRoute(CaptureScreen());
 
       default:
         return unDefineRoute();

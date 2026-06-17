@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnify/core/resources/constant/color_manager.dart';
 
 import '../../home/view/home_screen.dart';
+import '../../scan/view/scan_screen.dart';
 import '../viewmodel/navbar_viewmodel.dart';
 
 class NavbarScreen extends ConsumerWidget {
@@ -16,14 +17,14 @@ class NavbarScreen extends ConsumerWidget {
     final List<Widget> screens = [
       const HomeScreen(),
       const HomeScreen(),
-      const HomeScreen(),
+      const ScanScreen(),
       const HomeScreen(),
       const HomeScreen(),
     ];
 
     return Scaffold(
       backgroundColor: ColorManager.black6,
-
+      extendBody: true,
       body: screens[currentIndex],
 
       floatingActionButton: _buildScanButton(ref, currentIndex),

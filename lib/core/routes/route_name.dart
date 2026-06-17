@@ -9,4 +9,5 @@ class RouteName {
   static const String signUpScreen = "/signUpScreen";
   static const String forgotPasswordScreen = "/forgotPasswordScreen";
   static const String navBarScreen = "/navBarScreen";
+  static const String captureScreen = "/captureScreen";
 }
