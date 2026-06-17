@@ -14,7 +14,17 @@ class AppRouter {
         return _buildRoute(SignupScreen());
       case RouteName.forgotPasswordScreen:
         return _buildRoute(ForgotPasswordScreen());
-
+      case RouteName.navBarScreen:
+        return _buildRoute(NavbarScreen());
+      case RouteName.captureScreen:
+        return _buildRoute(CaptureScreen());
+      case RouteName.previewImageScreen:
+        final String imagePath = routeSettings.arguments as String;
+        return _buildRoute(PreviewImageScreen(imagePath: imagePath));
+      case RouteName.imageProcessionScreen:
+        return _buildRoute(ImageProcessionScreen());
+      case RouteName.generatingQuestionScreen:
+        return _buildRoute(GeneratingQuestionScreen());
       default:
         return unDefineRoute();
     }

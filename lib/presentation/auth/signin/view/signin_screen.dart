@@ -126,7 +126,11 @@ class _SigninScreenState extends State<SigninScreen> {
                   PrimaryButton(
                     label: "Sign In",
                     onPressed: () {
-                      /* Sign in logic */
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        RouteName.navBarScreen,
+                        (predicate) => false,
+                      );
                     },
                   ),
 
