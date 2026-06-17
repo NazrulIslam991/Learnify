@@ -19,11 +19,12 @@ class AppRouter {
       case RouteName.captureScreen:
         return _buildRoute(CaptureScreen());
       case RouteName.previewImageScreen:
-        // রাউট থেকে আর্গুমেন্ট রিসিভ করুন
         final String imagePath = routeSettings.arguments as String;
         return _buildRoute(PreviewImageScreen(imagePath: imagePath));
       case RouteName.imageProcessionScreen:
         return _buildRoute(ImageProcessionScreen());
+      case RouteName.generatingQuestionScreen:
+        return _buildRoute(GeneratingQuestionScreen());
       default:
         return unDefineRoute();
     }

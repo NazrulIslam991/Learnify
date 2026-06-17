@@ -12,4 +12,5 @@ class RouteName {
   static const String captureScreen = "/captureScreen";
   static const String previewImageScreen = "/previewImageScreen";
   static const String imageProcessionScreen = "/imageProcessionScreen";
+  static const String generatingQuestionScreen = "/generatingQuestionScreen";
 }

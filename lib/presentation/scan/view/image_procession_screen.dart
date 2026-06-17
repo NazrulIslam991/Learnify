@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
+import 'generating_question_screen.dart';
+
 class ImageProcessionScreen extends StatefulWidget {
   const ImageProcessionScreen({super.key});
 
@@ -29,6 +31,15 @@ class _ImageProcessionScreenState extends State<ImageProcessionScreen> {
       await Future.delayed(const Duration(seconds: 2));
       if (!mounted) return;
       setState(() => currentStep = i);
+    }
+
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const GeneratingQuestionScreen(),
+        ),
+      );
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:learnify/presentation/auth/signin/view/forgot_password_screen.da
 import 'package:learnify/presentation/auth/signin/view/signup_screen.dart';
 import 'package:learnify/presentation/navbar/view/navbar_screen.dart';
 import 'package:learnify/presentation/scan/view/capture_screen.dart';
+import 'package:learnify/presentation/scan/view/generating_question_screen.dart';
 import 'package:learnify/presentation/scan/view/image_procession_screen.dart';
 import 'package:learnify/presentation/scan/view/preview_image_screen.dart';
 
