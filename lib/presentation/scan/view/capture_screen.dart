@@ -1,43 +1,50 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:learnify/presentation/scan/view/preview_image_screen.dart';
 
-class CaptureScreen extends StatefulWidget {
+class CaptureScreen extends ConsumerStatefulWidget {
   const CaptureScreen({super.key});
 
   @override
-  State<CaptureScreen> createState() => _CaptureScreenState();
+  ConsumerState<CaptureScreen> createState() => _CaptureScreenState();
 }
 
-class _CaptureScreenState extends State<CaptureScreen>
+class _CaptureScreenState extends ConsumerState<CaptureScreen>
     with SingleTickerProviderStateMixin {
   CameraController? _controller;
   List<CameraDescription>? _cameras;
-
   bool _isFlashOn = false;
   bool _isInitialized = false;
-
   late AnimationController _scanLineController;
 
   @override
   void initState() {
     super.initState();
     _initCamera();
-
     _scanLineController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat();
   }
 
+  void _navigateToPreview(String path) {
+    if (!mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PreviewImageScreen(imagePath: path),
+      ),
+    );
+  }
+
   Future<void> _initCamera() async {
     _cameras = await availableCameras();
-
     _controller = CameraController(
       _cameras!.first,
       ResolutionPreset.high,
       enableAudio: false,
     );
-
     try {
       await _controller!.initialize();
       setState(() => _isInitialized = true);
@@ -48,28 +55,18 @@ class _CaptureScreenState extends State<CaptureScreen>
 
   Future<void> _toggleFlash() async {
     if (_controller == null) return;
-
     _isFlashOn = !_isFlashOn;
     await _controller!.setFlashMode(
       _isFlashOn ? FlashMode.torch : FlashMode.off,
     );
-
     setState(() {});
   }
 
   Future<void> _captureImage() async {
     if (_controller == null || !_controller!.value.isInitialized) return;
-
     try {
       final image = await _controller!.takePicture();
-
-      // 👉 এখানে তুমি next step করবে (send to scan/OCR page)
-      debugPrint("Image captured: ${image.path}");
-
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Image Captured Successfully")),
-      );
+      _navigateToPreview(image.path);
     } catch (e) {
       debugPrint("Capture error: $e");
     }
@@ -95,10 +92,7 @@ class _CaptureScreenState extends State<CaptureScreen>
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          /// 📸 Camera
           Positioned.fill(child: CameraPreview(_controller!)),
-
-          /// 🌑 Overlay
           Positioned.fill(
             child: Container(color: Colors.black.withOpacity(0.3)),
           ),
@@ -112,28 +106,23 @@ class _CaptureScreenState extends State<CaptureScreen>
                 borderRadius: BorderRadius.circular(24),
                 border: Border.all(color: Colors.white, width: 2),
               ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(24),
-                child: AnimatedBuilder(
-                  animation: _scanLineController,
-                  builder: (context, child) {
-                    return Stack(
-                      children: [
-                        Positioned(
-                          top: _scanLineController.value * 420,
-                          left: 0,
-                          right: 0,
-                          child: Container(height: 2, color: Colors.white),
-                        ),
-                      ],
-                    );
-                  },
+              child: AnimatedBuilder(
+                animation: _scanLineController,
+                builder: (context, _) => Stack(
+                  children: [
+                    Positioned(
+                      top: _scanLineController.value * 420,
+                      left: 0,
+                      right: 0,
+                      child: Container(height: 2, color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
 
-          /// 🔝 Top bar
+          /// 🔝 Top Bar
           Positioned(
             top: 50,
             left: 20,
@@ -150,7 +139,7 @@ class _CaptureScreenState extends State<CaptureScreen>
             ),
           ),
 
-          /// 🔘 Bottom bar
+          /// 🔘 Bottom Bar
           Positioned(
             bottom: 50,
             left: 30,
@@ -176,7 +165,6 @@ class _CaptureScreenState extends State<CaptureScreen>
                     ),
                   ),
                 ),
-
                 _btn(Icons.cameraswitch, () {}),
               ],
             ),
@@ -186,17 +174,15 @@ class _CaptureScreenState extends State<CaptureScreen>
     );
   }
 
-  Widget _btn(IconData icon, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.white12,
-          shape: BoxShape.circle,
-        ),
-        child: Icon(icon, color: Colors.white),
+  Widget _btn(IconData icon, VoidCallback onTap) => GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.all(12),
+      decoration: const BoxDecoration(
+        color: Colors.white12,
+        shape: BoxShape.circle,
       ),
-    );
-  }
+      child: Icon(icon, color: Colors.white),
+    ),
+  );
 }
