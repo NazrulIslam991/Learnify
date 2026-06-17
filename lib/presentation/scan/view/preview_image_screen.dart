@@ -21,11 +21,9 @@ class _PreviewImageScreenState extends State<PreviewImageScreen> {
     _currentImagePath = widget.imagePath;
   }
 
-  // ক্রপিং লজিক
   Future<void> _cropImage() async {
     final croppedFile = await ImageCropper().cropImage(
       sourcePath: _currentImagePath!,
-      // এখানে aspectRatioPresets সরাতে হবে
       uiSettings: [
         AndroidUiSettings(
           toolbarTitle: 'Crop Image',
@@ -33,7 +31,6 @@ class _PreviewImageScreenState extends State<PreviewImageScreen> {
           toolbarWidgetColor: Colors.white,
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: false,
-          // aspectRatioPresets এখানে আনতে হবে
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
             CropAspectRatioPreset.ratio3x2,
@@ -42,7 +39,6 @@ class _PreviewImageScreenState extends State<PreviewImageScreen> {
         ),
         IOSUiSettings(
           title: 'Crop Image',
-          // iOS এর জন্য এখানে সেট করুন
           aspectRatioPresets: [
             CropAspectRatioPreset.square,
             CropAspectRatioPreset.ratio3x2,

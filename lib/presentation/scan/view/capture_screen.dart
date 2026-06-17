@@ -97,7 +97,7 @@ class _CaptureScreenState extends ConsumerState<CaptureScreen>
             child: Container(color: Colors.black.withOpacity(0.3)),
           ),
 
-          /// 🎯 Focus Frame
+          ///  Focus Frame
           Center(
             child: Container(
               width: 300,
@@ -122,7 +122,7 @@ class _CaptureScreenState extends ConsumerState<CaptureScreen>
             ),
           ),
 
-          /// 🔝 Top Bar
+          /// Top Bar
           Positioned(
             top: 50,
             left: 20,
@@ -139,7 +139,7 @@ class _CaptureScreenState extends ConsumerState<CaptureScreen>
             ),
           ),
 
-          /// 🔘 Bottom Bar
+          ///  Bottom Bar
           Positioned(
             bottom: 50,
             left: 30,
