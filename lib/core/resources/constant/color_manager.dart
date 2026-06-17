@@ -38,6 +38,7 @@ class ColorManager {
   static const Color purpleShade1 = Color(0xff8F6CFD);
   static const Color purpleShade2 = Color(0xff8E5EF3);
   static const Color purpleShade3 = Color(0xffEDE9FF);
+  static const Color navbar = Color(0xFF1A1A2E);
   static const Color black700 = Color(0xff070707);
   static const Color black100 = Color(0xffD2D2D5);
   static const Color black300 = Color(0xff777980);
@@ -50,6 +51,7 @@ class ColorManager {
   static const Color black2 = Color(0x05000000);
   static const Color black4 = Color(0x0A000000);
   static const Color black6 = Color(0x0F000000);
+  static const Color black7 = Color(0xFF0F0F1A);
   static const Color black400 = Color(0xff4A4C56);
   static const Color lightGray = Color(0xffD9D9D9);
   static const Color black500 = Color(0xff1D1F2C);
@@ -93,13 +95,8 @@ class ColorManager {
   static const Color mintAqua = Color(0xFFD3F4EF);
 
   static const LinearGradient primaryGradient = LinearGradient(
-    colors: [
-      Color(0xFF795FF4),
-      Color(0xFF8F6CFD),
-      Color(0xFF8E5EF3),
-    ],
+    colors: [Color(0xFF795FF4), Color(0xFF8F6CFD), Color(0xFF8E5EF3)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
-
 }
