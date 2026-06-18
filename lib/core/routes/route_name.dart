@@ -7,6 +7,7 @@ class RouteName {
   static const String onboardingScreen = "/onboardingScreen";
   static const String signInScreen = "/signInScreen";
   static const String signUpScreen = "/signUpScreen";
+  static const String otpVerificationScreen = "/otpVerificationScreen";
   static const String forgotPasswordScreen = "/forgotPasswordScreen";
   static const String navBarScreen = "/navBarScreen";
   static const String captureScreen = "/captureScreen";

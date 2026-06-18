@@ -25,6 +25,8 @@ class AppRouter {
         return _buildRoute(ImageProcessionScreen());
       case RouteName.generatingQuestionScreen:
         return _buildRoute(GeneratingQuestionScreen());
+      case RouteName.otpVerificationScreen:
+        return _buildRoute(OtpVerificationScreen());
       default:
         return unDefineRoute();
     }
