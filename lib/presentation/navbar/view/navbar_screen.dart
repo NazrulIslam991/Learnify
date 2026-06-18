@@ -6,6 +6,7 @@ import 'package:learnify/core/resources/constant/color_manager.dart';
 import '../../home/view/home_screen.dart';
 import '../../library/view/library_screen.dart';
 import '../../scan/view/scan_screen.dart';
+import '../../setting/view/setting_screen.dart';
 import '../viewmodel/navbar_viewmodel.dart';
 
 class NavbarScreen extends ConsumerWidget {
@@ -20,7 +21,7 @@ class NavbarScreen extends ConsumerWidget {
       const LibraryScreen(),
       const ScanScreen(),
       const HomeScreen(),
-      const HomeScreen(),
+      const SettingScreen(),
     ];
 
     return Scaffold(
@@ -72,14 +73,8 @@ class NavbarScreen extends ConsumerWidget {
         children: [
           _buildNavItem(ref, Icons.home_filled, "Home", 0, currentIndex),
           _buildNavItem(ref, Icons.library_books, "Library", 1, currentIndex),
-          SizedBox(width: 40.w),
-          _buildNavItem(
-            ref,
-            Icons.chat_bubble_outline,
-            "Chat",
-            3,
-            currentIndex,
-          ),
+          SizedBox(width: 50.w),
+          _buildNavItem(ref, Icons.smart_toy, "EduBot", 3, currentIndex),
           _buildNavItem(
             ref,
             Icons.settings_outlined,
