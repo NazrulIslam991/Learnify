@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learnify/core/routes/route_name.dart';
 import 'package:learnify/presentation/auth/signin/view/forgot_password_screen.dart';
+import 'package:learnify/presentation/auth/signin/view/otp_verification_screen.dart';
 import 'package:learnify/presentation/auth/signin/view/signup_screen.dart';
 import 'package:learnify/presentation/navbar/view/navbar_screen.dart';
 import 'package:learnify/presentation/scan/view/capture_screen.dart';

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnify/core/resources/constant/color_manager.dart';
 import 'package:learnify/core/resources/constant/image_manager.dart';
 import 'package:learnify/core/resources/constant/style_manager.dart';
+import 'package:learnify/core/routes/route_name.dart';
 import 'package:learnify/presentation/widget/custom_text_input_field.dart';
 import 'package:learnify/presentation/widget/primary_button.dart';
 
@@ -137,7 +138,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   PrimaryButton(
                     label: "Create Account",
                     onPressed: () {
-                      /* Sign up logic */
+                      Navigator.pushNamed(
+                        context,
+                        RouteName.otpVerificationScreen,
+                      );
                     },
                   ),
 
