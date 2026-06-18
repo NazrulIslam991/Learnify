@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:learnify/core/resources/constant/color_manager.dart';
 
 import '../../home/view/home_screen.dart';
+import '../../library/view/library_screen.dart';
 import '../../scan/view/scan_screen.dart';
 import '../viewmodel/navbar_viewmodel.dart';
 
@@ -16,7 +17,7 @@ class NavbarScreen extends ConsumerWidget {
 
     final List<Widget> screens = [
       const HomeScreen(),
-      const HomeScreen(),
+      const LibraryScreen(),
       const ScanScreen(),
       const HomeScreen(),
       const HomeScreen(),
