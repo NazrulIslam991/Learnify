@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnify/core/resources/constant/color_manager.dart';
 
 class LibraryScreen extends StatefulWidget {
   const LibraryScreen({super.key});
@@ -50,9 +51,6 @@ class _LibraryScreenState extends State<LibraryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const Color darkBg = Color(0xFF10111F);
-    const Color cardColor = Color(0xFF1E2139);
-    const Color primary = Color(0xFF6B5BFB);
     const Color textSecondary = Color(0xFFB0B0B0);
 
     // filter logic
@@ -61,7 +59,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
         : scans.where((e) => e["isFavorite"] == true).toList();
 
     return Scaffold(
-      backgroundColor: darkBg,
+      backgroundColor: ColorManager.black6,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -92,7 +90,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
               Container(
                 height: 50,
                 decoration: BoxDecoration(
-                  color: cardColor,
+                  color: ColorManager.navbar,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -107,6 +105,11 @@ class _LibraryScreenState extends State<LibraryScreen> {
                           border: InputBorder.none,
                           hintText: "Search...",
                           hintStyle: TextStyle(color: textSecondary),
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
                         ),
                       ),
                     ),
@@ -128,12 +131,12 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         height: 48,
                         decoration: BoxDecoration(
                           color: isHistorySelected
-                              ? primary
+                              ? ColorManager.purpleShade
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(12),
                           border: isHistorySelected
                               ? null
-                              : Border.all(color: cardColor),
+                              : Border.all(color: ColorManager.navbar),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -168,12 +171,12 @@ class _LibraryScreenState extends State<LibraryScreen> {
                         height: 48,
                         decoration: BoxDecoration(
                           color: !isHistorySelected
-                              ? primary
+                              ? ColorManager.purpleShade
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(12),
                           border: !isHistorySelected
                               ? null
-                              : Border.all(color: cardColor),
+                              : Border.all(color: ColorManager.navbar),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -221,7 +224,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
                             margin: const EdgeInsets.only(bottom: 15),
                             padding: const EdgeInsets.all(15),
                             decoration: BoxDecoration(
-                              color: cardColor,
+                              color: ColorManager.navbar,
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Row(
@@ -231,10 +234,13 @@ class _LibraryScreenState extends State<LibraryScreen> {
                                   height: 45,
                                   width: 45,
                                   decoration: BoxDecoration(
-                                    color: darkBg,
+                                    color: ColorManager.mintAqua.withAlpha(40),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  child: Icon(item["icon"], color: primary),
+                                  child: Icon(
+                                    item["icon"],
+                                    color: ColorManager.purpleShade,
+                                  ),
                                 ),
 
                                 const SizedBox(width: 15),
